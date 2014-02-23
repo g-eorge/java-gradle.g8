@@ -1,8 +1,6 @@
 apply plugin: 'java'
 
 version = "$version$"
-group = "$group$"
-mainClassName = "$group$.Main"
 
 repositories {
   mavenCentral()
