@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+version = "$version$"
+group = "$group$"
+mainClassName = "$group$.Main"
+
+repositories {
+  mavenCentral()
+}
+
+jar {
+  dependsOn configurations.runtime
+  from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+dependencies {
+  compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.+'
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "$gradle_version$"
+}
